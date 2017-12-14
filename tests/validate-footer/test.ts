@@ -3,23 +3,36 @@ import { getRuleName } from 'sonarwhal/dist/src/lib/utils/rule-helpers';
 import { IRuleTest } from 'sonarwhal/dist/tests/helpers/rule-test-type';
 import * as ruleRunner from 'sonarwhal/dist/tests/helpers/rule-runner';
 const ruleName = getRuleName(__dirname);
+const footer = {
+    noProblem: `<footer>Best Developer Ever</footer>`,
+    noFooter: ``,
+    wrongTextInFooter: `<footer>Best Ever</footer>`
+};
 
-/*
- * You should test for cases where the rule passes and doesn't.
- * More information about how `ruleRunner` can be configured is
- * available in:
- * https://sonarwhal.com/docs/contributor-guide/rules/#howtotestarule
- */
-const tests: Array<IRuleTest> = [
+const defaultTests: Array<IRuleTest> = [
     {
-        name: 'This test should pass',
-        serverConfig: generateHTMLPage()
+        name: `Footer exists and it contains 'Best Developer Ever'`,
+        serverConfig: generateHTMLPage(footer.noProblem)
     },
     {
-        name: `This test should fail`,
-        reports: [{ message: `This should be your error message` }],
-        serverConfig: generateHTMLPage()
+        name: `Footer doesn't exist`,
+        reports: [{ message: `<footer> element doesn't exist in this page.` }],
+        serverConfig: generateHTMLPage(footer.noFooter)
+    },
+    {
+        name: `Footer exists, but doesn't contain 'Best Developer Ever'`,
+        reports: [{ message: `"Best Developer Ever" is not included in the footer.` }],
+        serverConfig: generateHTMLPage(footer.wrongTextInFooter)
     }
 ];
 
-ruleRunner.testRule(ruleName, tests);
+const configTests: Array<IRuleTest> = [
+    {
+        name: `Footer exists, but doesn't contain 'Awesome Code'`,
+        reports: [{ message: `"Awesome Code" is not included in the footer.` }],
+        serverConfig: generateHTMLPage(footer.wrongTextInFooter)
+    }
+];
+
+ruleRunner.testRule(ruleName, defaultTests);
+ruleRunner.testRule(ruleName, configTests, { ruleOptions: { stringToBeIncluded: 'Awesome Code' } })
