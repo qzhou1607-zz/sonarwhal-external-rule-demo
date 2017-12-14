@@ -4,29 +4,35 @@ A new rule to validate footer
 
 ## Why is this important?
 
-Explain why this rule is important for your users
+To make sure that my personal brand is in the footer of every single stunning website made by me!
 
 ## What does the rule check?
 
-A bit more detail of what the rule does.
+* A footer should be present in the website.
+* The footer should contain my brand name `Best Developer Ever`.
 
 ### Examples that **trigger** the rule
 
-A list of code examples that will fail this rule.
-It's good to put some edge cases in here.
+```
+<footer>
+    <div>
+        Whatever
+    </div>
+</footer>
+
+```
 
 ### Examples that **pass** the rule
 
-A list of code examples that will pass this rule.
-It's good to put some edge cases in here.
+```
+<footer>
+    <div>
+        Best Developer Ever
+    </div>
+</footer>
+
+```
 
 ## Can the rule be configured?
 
-If this rule allows some configuration, please put the format and
-options for the user.
-
-## Further Reading
-
-What can the user read to know more about this subject?
-
-## License
+Yes. The target string to be checked can be configured using `stringToBeIncluded` property.
