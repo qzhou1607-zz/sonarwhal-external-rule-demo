@@ -1,13 +1,13 @@
 {
     "connector": {
-        "name": "jsdom",
+        "name": "chrome",
         "options": {
             "waitFor": 1000
         }
     },
-    "formatters": "summary",
+    "formatters": "stylish",
     "rulesTimeout": 120000,
     "rules": {
-        "validate-footer": "warning"
+        "validate-footer": "error"
     }
 }

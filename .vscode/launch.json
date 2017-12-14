@@ -1,17 +1,42 @@
 {
-	// Use IntelliSense to learn about possible attributes.
-	// Hover to view descriptions of existing attributes.
-	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Launch Program",
-			"program": "${workspaceFolder}/src\\rules\\validate-footer\\validate-footer.ts",
-			"outFiles": [
-				"${workspaceFolder}/**/*.js"
-			]
-		}
-	]
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/src\\rules\\validate-footer\\validate-footer.ts",
+            "outFiles": [
+                "${workspaceFolder}/**/*.js"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Sonar - site",
+            "program": "${workspaceRoot}\\node_modules\\sonarwhal\\dist\\src\\bin\\sonarwhal.js",
+            "args": [
+                "https://sonarwhal.com"
+            ],
+            "cwd": "${workspaceRoot}",
+            "sourceMaps": true,
+            "protocol": "inspector",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test validate footer",
+            "program": "${workspaceRoot}\\node_modules\\ava\\profile.js",
+            "args": [
+                "dist/tests/validate-footer/test.js"
+            ],
+            "cwd": "${workspaceRoot}",
+            "sourceMaps": true,
+            "protocol": "inspector"
+        }
+    ]
 }
