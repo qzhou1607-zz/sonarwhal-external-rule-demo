@@ -19,7 +19,11 @@ const debug: debug.IDebugger = d(__filename);
 const rule: IRuleBuilder = {
     create(context: RuleContext): IRule {
         let footerExists = false;
-        const stringToBeIncluded = `Best Developer Ever`;
+        let stringToBeIncluded;
+
+        const loadRuleConfigs = () => {
+            stringToBeIncluded = (context.ruleOptions && context.ruleOptions.stringToBeIncluded) || `Best Developer Ever`;
+        };
 
         const footerMissing = async (traverseEnd: ITraverseEnd) => {
             const { resource } = traverseEnd;
@@ -41,6 +45,8 @@ const rule: IRuleBuilder = {
             }
         };
 
+        loadRuleConfigs();
+
         return {
             'element::footer': validateFooter,
             'traverse::end': footerMissing
@@ -52,13 +58,10 @@ const rule: IRuleBuilder = {
             description: `A new rule to validate footer`
         },
         recommended: false,
-        schema: [
-            /*
-             * If you want to allow the user to configure your rule
-             * you should use a valid JSON schema. More info in:
-             * https://sonarwhal.com/docs/contributor-guide/rules/#themetaproperty
-             */
-        ],
+        schema: [{
+            additionalProperties: false,
+            properties: { stringToBeIncluded: { type: 'string' } }
+        }],
         worksWithLocalFiles: true
     }
 };
