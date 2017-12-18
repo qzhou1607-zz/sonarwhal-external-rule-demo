@@ -4,15 +4,15 @@ import { IRuleTest } from 'sonarwhal/dist/tests/helpers/rule-test-type';
 import * as ruleRunner from 'sonarwhal/dist/tests/helpers/rule-runner';
 const ruleName = getRuleName(__dirname);
 const footer = {
-    configedTextInFooter: `<footer>The Volcano Coffee Company 2018</footer>`,
+    configedTextInFooter: `<footer>(c) Qing Zhou</footer>`,
     noFooter: ``,
-    noProblem: `<footer>The Volcano Coffee Company 2017</footer>`,
-    wrongTextInFooter: `<footer>The Volcano Cofee Company 2017</footer>`
+    noProblem: `<footer>(c) sonarwhal</footer>`,
+    wrongTextInFooter: `<footer>(c) Sonarwhal</footer>`
 };
 
 const defaultTests: Array<IRuleTest> = [
     {
-        name: `Footer exists and it contains 'The Volcano Coffee Company 2017'`,
+        name: `Footer exists and it contains '(c) sonarwhal'`,
         serverConfig: generateHTMLPage('', footer.noProblem)
     },
     {
@@ -21,19 +21,26 @@ const defaultTests: Array<IRuleTest> = [
         serverConfig: generateHTMLPage('', footer.noFooter)
     },
     {
-        name: `Footer exists, but doesn't contain 'The Volcano Coffee Company 2017'`,
-        reports: [{ message: `"The Volcano Coffee Company 2017" is not included in the footer.` }],
+        name: `Footer exists, but doesn't contain '(c) sonarwhal'`,
+        reports: [{ message: `"(c) sonarwhal" is not included in the footer.` }],
         serverConfig: generateHTMLPage('', footer.wrongTextInFooter)
     }
 ];
 
 const configTests: Array<IRuleTest> = [
     {
-        name: `Footer exists, but doesn't contain 'The Volcano Coffee Company 2018'`,
-        reports: [{ message: `"The Volcano Coffee Company 2018" is not included in the footer.` }],
+        name: `Footer exists, but doesn't contain '(c) Qing Zhou'`,
+        reports: [{ message: `"(c) Qing Zhou" is not included in the footer.` }],
         serverConfig: generateHTMLPage('', footer.noProblem)
+    },
+    {
+        name: `Footer exists, and it contains the configed string '(c) Qing Zhou'`,
+        serverConfig: generateHTMLPage('', footer.configedTextInFooter)
     }
 ];
 
+// Tests that use the default target string.
 ruleRunner.testRule(ruleName, defaultTests);
-ruleRunner.testRule(ruleName, configTests, { ruleOptions: { stringToBeIncluded: `The Volcano Coffee Company 2018` } });
+
+// Tests that use the configed target string.
+ruleRunner.testRule(ruleName, configTests, { ruleOptions: { stringToBeIncluded: `(c) Qing Zhou` } });

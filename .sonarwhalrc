@@ -8,6 +8,6 @@
     "formatters": "stylish",
     "rulesTimeout": 120000,
     "rules": {
-        "validate-footer": ["error", {"stringToBeIncluded": "Awesome Code"}]
+        "validate-footer": "error"
     }
 }

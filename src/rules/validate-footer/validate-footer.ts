@@ -22,7 +22,7 @@ const rule: IRuleBuilder = {
         let stringToBeIncluded;
 
         const loadRuleConfigs = () => {
-            stringToBeIncluded = (context.ruleOptions && context.ruleOptions.stringToBeIncluded) || `The Volcano Coffee Company 2017`;
+            stringToBeIncluded = (context.ruleOptions && context.ruleOptions.stringToBeIncluded) || `(c) sonarwhal`;
         };
 
         const footerMissing = async (traverseEnd: ITraverseEnd) => {

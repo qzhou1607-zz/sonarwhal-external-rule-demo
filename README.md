@@ -4,13 +4,13 @@ A new rule to validate footer
 
 ## Why is this important?
 
-To make sure that the correct copy right text is used at the footer of
+To make sure that the correct copyright text is used at the footer of
 the pages.
 
 ## What does the rule check?
 
 * A footer should be present in the website.
-* The footer should contain my copy right text `The Volcano Coffee Company 2017`.
+* The footer should contain my copyright text `(c) sonarwhal`.
 
 ### Examples that **trigger** the rule
 
@@ -28,7 +28,7 @@ the pages.
 ```html
 <footer>
     <div>
-        The Volcano Coffee Company 2017
+        (c) sonarwhal
     </div>
 </footer>
 
