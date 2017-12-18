@@ -4,7 +4,8 @@ A new rule to validate footer
 
 ## Why is this important?
 
-To make sure that my personal brand is in the footer of every single stunning website made by me!
+To make sure that the correct copy right text is used at the footer of
+the pages.
 
 ## What does the rule check?
 
@@ -13,7 +14,7 @@ To make sure that my personal brand is in the footer of every single stunning we
 
 ### Examples that **trigger** the rule
 
-```
+```html
 <footer>
     <div>
         Whatever
@@ -24,7 +25,7 @@ To make sure that my personal brand is in the footer of every single stunning we
 
 ### Examples that **pass** the rule
 
-```
+```html
 <footer>
     <div>
         The Volcano Coffee Company 2017
@@ -35,4 +36,5 @@ To make sure that my personal brand is in the footer of every single stunning we
 
 ## Can the rule be configured?
 
-Yes. The target string to be checked can be configured using `stringToBeIncluded` property.
+Yes. The target string to be checked can be configured using
+`stringToBeIncluded` property.

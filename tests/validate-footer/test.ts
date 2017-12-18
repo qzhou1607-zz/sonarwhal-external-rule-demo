@@ -5,8 +5,8 @@ import * as ruleRunner from 'sonarwhal/dist/tests/helpers/rule-runner';
 const ruleName = getRuleName(__dirname);
 const footer = {
     configedTextInFooter: `<footer>The Volcano Coffee Company 2018</footer>`,
-    noProblem: `<footer>The Volcano Coffee Company 2017</footer>`,
     noFooter: ``,
+    noProblem: `<footer>The Volcano Coffee Company 2017</footer>`,
     wrongTextInFooter: `<footer>The Volcano Cofee Company 2017</footer>`
 };
 
@@ -36,4 +36,4 @@ const configTests: Array<IRuleTest> = [
 ];
 
 ruleRunner.testRule(ruleName, defaultTests);
-ruleRunner.testRule(ruleName, configTests, { ruleOptions: { stringToBeIncluded: `The Volcano Coffee Company 2018` } })
+ruleRunner.testRule(ruleName, configTests, { ruleOptions: { stringToBeIncluded: `The Volcano Coffee Company 2018` } });
