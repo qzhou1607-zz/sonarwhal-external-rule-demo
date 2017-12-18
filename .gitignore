@@ -1,2 +1,4 @@
+*.pid
+.vscode
 dist/
 node_modules/
