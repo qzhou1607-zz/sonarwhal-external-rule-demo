@@ -9,7 +9,7 @@ To make sure that my personal brand is in the footer of every single stunning we
 ## What does the rule check?
 
 * A footer should be present in the website.
-* The footer should contain my brand name `Best Developer Ever`.
+* The footer should contain my copy right text `The Volcano Coffee Company 2017`.
 
 ### Examples that **trigger** the rule
 
@@ -27,7 +27,7 @@ To make sure that my personal brand is in the footer of every single stunning we
 ```
 <footer>
     <div>
-        Best Developer Ever
+        The Volcano Coffee Company 2017
     </div>
 </footer>
 

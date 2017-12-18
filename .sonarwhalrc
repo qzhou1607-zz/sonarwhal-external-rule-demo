@@ -1,6 +1,6 @@
 {
     "connector": {
-        "name": "chrome",
+        "name": "jsdom",
         "options": {
             "waitFor": 1000
         }
